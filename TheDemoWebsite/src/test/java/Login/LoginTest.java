@@ -1,6 +1,7 @@
 package Login;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -30,18 +31,19 @@ public class LoginTest {
 	        driver.get(DemoHome.url);
 	        DemoHome Website = new DemoHome(driver);
 	        DemoAddUser DemoAddUserpage = PageFactory.initElements(driver, DemoAddUser.class);
+	        DemoLogin DemoLoginpage = PageFactory.initElements(driver,DemoLogin.class);
 	        
 	        Website.navtoAddUser();
 	        DemoAddUserpage.AddUser();
 	        
-	        
-//	        WebElement images = driver.findElement(By.linkText("Images"));
-//	        images.click();		
+	        Website.navtoLogin();
+	        DemoLoginpage.LoginUser();
+	        DemoLoginpage.LoginStatus();
 	        Thread.sleep(15000);
-//	        assertEquals("Google", driver.getTitle());
+
 	    }
 
-	    @After
+		@After
 	    public void tearDown() {
 	        driver.close();
 	    }
